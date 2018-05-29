@@ -1,9 +1,6 @@
 pi = [23,13,24,0,7,15,14,6,25,16,22,1,19,18,5,11,17,2,21,12,20,4,10,9,3,8]
 ##invPi = [3,11,17,24,21,14,7,4,25,23,22,15,19,1,6,5,9,16,13,12,20,18,10,0,2,8]
-invPi = []
-for i in range(len(pi)):
-    invPi.append(pi.index(i))
-
+invPi = [pi.index(i) for i in range(0, len(pi))]
 
 def encrypt(ptext, K, i): # assuming Z26
     if ptext:

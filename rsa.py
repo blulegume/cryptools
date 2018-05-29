@@ -1,15 +1,6 @@
 from cryptools import gcd,inverse_mod_m,pollard
 from math import log,floor,ceil
 
-# given n, calculates p and q
-# very inefficient
-def find_factors(n):
-    factors = [n,1]
-    for i in range(1,n):
-        if gcd(n,i) != 1:
-            factors = [i, n/i]
-            return factors
-
 # finds block number ^2^x
 def blocka(n,block,h):
     bp2p = [block]
@@ -71,13 +62,12 @@ def trim_pwrs(pwrs,k):
     return new_k
 
 def decrypt(n,b,block_nums):
-    #N = find_factors(n)
     N = pollard(n,10) # is 10 enough?
     p = N[0]
     q = N[1]
 
-    Ion = (p-1) * (q-1)
-    a = inverse_mod_m(b,Ion)
+    Phi_n = (p-1) * (q-1)
+    a = inverse_mod_m(b,Phi_n)
     
     pbs = floor(log(n,26))
 
